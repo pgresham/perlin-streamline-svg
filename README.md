@@ -31,7 +31,7 @@ Here is a basic breakdown of the controls:
 
 + __Line Color__ and __Background Color__ change the colors of the preview window. As noted above, this color information is not included in the SVG output.
 
- <img width="70%" alt="An image of the streamlines UI running" src="https://github.com/user-attachments/assets/64a49563-98d3-480d-bfcd-48a6def3d115" />
+ <img width="100%" alt="An image of the streamlines UI running" src="https://github.com/user-attachments/assets/64a49563-98d3-480d-bfcd-48a6def3d115" />
 
 ---
 
