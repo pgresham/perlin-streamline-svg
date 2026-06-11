@@ -1,11 +1,11 @@
-## A Perlin Streamline UI and SVG Generator
+# A Perlin Streamline UI and SVG Generator
 
-### What it is:
+## What it is:
 
-This program is an implementation of the Streamlines repository by Andrei Kashka (https://github.com/anvaka/streamlines), adding an HTML-based UI which allows for partial manipulation of the output as well as a way to download the linework as an SVG file.
+This program is an implementation of the Streamlines repository by Andrei Kashka (https://github.com/anvaka/streamlines), adding a HTML-based UI which allows for partial manipulation of the output as well as a way to download the linework as an SVG file.
 It was developed with the pen plotter in mind, and generates detailed, albeit large vector files for this purpose. 
 
-### How to get it and run it:
+## How to get it and run it:
 
 To download, you can use: `git clone https://github.com/pgresham/perlin-streamline-svg` to obtain all files  
 ...or download the zip and extract it into a folder.
@@ -15,7 +15,7 @@ __Please note:__ this program creates quite large files (5Mb to 50Mb+) depending
 
 *It is recommended to run this through a local web server such as python's http.server module to ensure proper functioning.* 
 
-### What the controls do:
+## What the controls do:
 
 Here is a basic breakdown of the controls:
 
