@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXT6313TGG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TXT6313TGG');
+
+</script>
+
+<meta http-equiv='X-UA-Compatible' content='IE=edge' >
+  <meta property="og:title" content="Noise, streamlines and Art." />
+  <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'>
+  <meta name="Description" content="This website builds streamlines of perlin noise.">
+  <meta name="keywords" content="vector field, streamlines, generative art, visualizations" />
+
+  <title>Beautiful Noise</title>
+  <style type="text/css" media="screen">
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    padding: 0;
+    margin: 0;
+    background: lightgray;
+    overflow: hidden;
+    position: absolute; 
+    top: 0; left: 0; overflow: hidden; width: 100%; height: 100%;
+  }
+
+  .hide-opacity {
+    opacity: 0;
+}
+canvas {
+  position: relative;
+  width: 83%;
+  height: 100%;
+  left: 0; top: 0;
+  opacity: 1;
+  border:2px solid black;
+  background-color: cadetblue;
+
+  -webkit-transition: opacity 600ms ease-in-out;
+  -moz-transition: opacity 600ms ease-in-out;
+  -ms-transition: opacity 600ms ease-in-out;
+  -o-transition: opacity 600ms ease-in-out;
+  transition: opacity 600ms ease-in-out;
+}
+.controls {
+  float:left;
+  width:15%;
+  height: 100%;
+  font-size: 14px;
+  font-family: sans-serif;
+  text-decoration: none;
+  background-color:lightgray;
+  padding: 0 1% 0 1%;
+  
+}
+.controls input{
+  width:80%;
+  float:left;
+}
+.controls label{
+  clear: both;
+  float: left;
+  width:80%;
+
+  padding: 2% 0 2% 0;
+}
+.readout{
+  float:right;
+}
+#algo-select{
+  margin:5px 0;
+  width:90%;
+  border-width:2px 0 2px 0;}
+
+
+  </style>
+</head>
+<body>
+  
+
+  <canvas id='scene'>
+  
+  </canvas>
+  
+
+<div class="controls"> 
+
+  <h2>Perlin Streamlines</h2>
+  <p>A modified perlin noise based streamline genrator for the pen plotter.</p>
+
+  <button onclick="downloadSVG()">Download SVG</button><br>
+  
+  <button onclick="restart()">Re-Draw</button>
+
+  <hr>
+  <h3>Selections of Consequence</h3>
+  <p><i>These will change the output file</i></p>
+  
+  <label for="factor">dSep (line count)</label><br>
+  <input id="factor" name="factor" type="range" min=".5" max="20" step="0.1" value="1"
+       oninput="updateFactor(this.value)">
+  <span id="factor-slider" class="readout">1</span><br><br>
+
+  <label for="p-scale">Freq (loopiness)</label><br>
+  <input id="p-scale" name="p-scale" type="range" min="-20" max="400" step="5" value="20"
+       oninput="updatePerlinScale(this.value)">
+  <span id="p-scale-readout">20</span><br><br>
+
+  <label for="k-value">k (noise)</label><br>
+  <input id="k-value" name="k-value" type="range" min="0" max="5" step=".1" value="1"
+       oninput="updateKValue(this.value)">
+  <span id="k-value-readout">1</span><br><br>
+
+  <label for="lerp-value">LERP (grid)</label><br>
+  <input id="lerp-value" name="lerp-value" type="range" min="1" max="2" step=".1" value="1"
+       oninput="updateLerp(this.value)">
+  <span id="lerp-value-readout">1</span><br><br>
+
+
+<label for="algo-select">Algorithm:</label>
+<select id="algo-select" onchange="selectAlgorithm(this.value)">
+ 
+  <option value="0">Benjamin</option>
+  <option value="1">Flusser</option>
+  <option value="2">McLuhan</option>
+  <option value="3">Manovich</option>
+
+</select>
+<br><br>
+
+  <hr>
+  <h3>Pretty Things</h3>
+  <p><i>These do not change the output file</i></p>
+  <label for="line-color">Line Color (display only)</label>
+  <input type="color" id="line-color" value="#000000" oninput="updateColor(this.value)">
+
+  <!-- Canvas Color is handled in-document by a separate script -->
+  <label for="bkgnd-color">Canvas Color (display only)</label>
+  <input type="color" id="bkgnd-color" value="#5F9EA0" oninput="updateCanvas(this.value)">
+
+<script src="bundle.js"></script>
+<script>
+  const canvas = document.getElementById("scene");
+
+  function updateCanvas(color) {
+    canvas.style.backgroundColor = color;
+    }
+  
+
+</script>
+
+</body>
+</html>
